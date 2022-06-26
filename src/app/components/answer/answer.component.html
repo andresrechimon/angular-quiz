@@ -1,0 +1,20 @@
+<h5 class="card-title">Resultado</h5>
+<div *ngFor="let question of listQuestion; let i = index">
+    <h4 class="card-title">{{question.description}}</h4>
+    <ul class="list-group">
+        <ng-container *ngFor="let answer of listQuestion[i].answers; let j = index">
+            <li class="list-group-item" [ngClass]="addClassOption(answer, i, j)!">{{answer.name}}
+                <span class="material-icons badge correct" *ngIf="answer.isCorrect == 1 && answersUser[i] == j">check_circle</span>
+                <span class="material-icons badge incorrect" *ngIf="answer.isCorrect == 0 && answersUser[i] == j">dangerous</span>
+            </li>
+        </ng-container>
+    </ul>
+</div>
+<br><br>
+<div class="row">
+    <div class="col-lg-4 offset-lg-4">
+        <button class="btn btn-info btn-block btn-lg" 
+        (click)="back()"
+        >Volver</button>
+    </div>
+</div>
